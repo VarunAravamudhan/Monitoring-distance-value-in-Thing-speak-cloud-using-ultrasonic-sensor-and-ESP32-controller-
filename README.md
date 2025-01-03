@@ -96,8 +96,43 @@ Prototype and build IoT systems without setting up servers or developing web sof
 
  
 # PROGRAM:
+~~~
+#define echoPin 25
+#define trigPin 26
+
+long duration;
+int distance;
+void setup(){
+  Serial.begin(9600);
+  pinMode(trigPin,OUTPUT);
+  pinMode(echoPin,INPUT);
+ }
+void loop(){
+  digitalWrite(trigPin,LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin,LOW);
+  
+  duration=pulseIn(echoPin,HIGH);
+  distance=(duration*0.034/2);
+  Serial.print("Distance : ");
+  Serial.print(distance);
+  Serial.println(" cm ");
+  delay(1000);
+               
+}
+~~~
 # CIRCUIT DIAGRAM:
+
+![image](https://github.com/user-attachments/assets/851e7bd9-4565-4336-a5ff-ea9bf8a56707)
+
+
 # OUTPUT:
+
+![b90d983e-5133-4adb-af92-bda5491bd5d0](https://github.com/user-attachments/assets/7d1e6dac-4beb-49ec-8ac7-35c7c88e44f3)
+
+
 # RESULT:
 Thus the distance values are updated in the Thing speak cloud using ESP32 controller.
 
